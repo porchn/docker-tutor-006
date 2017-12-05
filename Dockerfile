@@ -11,13 +11,10 @@ RUN touch /usr/local/etc/php/php.ini \
 
 RUN apt-get -y update \
     && apt-get install -y --no-install-recommends \
-    libgd2-noxpm-dev \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib
-
-RUN docker-php-ext-install mysqli gd
+RUN docker-php-ext-install mysqli
 
 RUN a2enmod rewrite
 
